@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}Search Result{% endblock %}
+{% block content %}
+<h1>Search Result</h1>
+
+{% if disambiguation %}
+    <p>We need a more specific title. Try one of these:</p>
+    <ul>
+    {% for option in options %}
+        <li>{{ option }}</li>
+    {% endfor %}
+    </ul>
+{% elif not_found %}
+    <p>Page "{{ query }}" not found. Try another search.</p>
+{% else %}
+    <h2>{{ page.title }}</h2>
+    <p>{{ page.summary }}</p>
+    <a href="{{ page.url }}" target="_blank">Read more on Wikipedia</a>
+{% endif %}
+
+<a href="{{ url_for('index') }}">Back to search</a>
+{% endblock %}

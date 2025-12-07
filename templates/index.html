@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Flask Wiki - Home{% endblock %}
+{% block content %}
+<h1>Wikipedia Search</h1>
+<form method="post" action="{{ url_for('search') }}">
+    <input type="text" name="query" placeholder="Enter page title">
+    <input type="submit" value="Search">
+</form>
+{% if message %}
+<p style="color:red;">{{ message }}</p>
+{% endif %}
+{% endblock %}
